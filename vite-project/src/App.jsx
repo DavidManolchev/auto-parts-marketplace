@@ -4,6 +4,7 @@ import GuestView from "./views/GuestView";
 import LoggedUserView from "./views/LoggedUserView";
 import Home from "./pages/Home";
 import Browse from "./pages/Browse";
+import Details from "./pages/Details";
 import { Login, Signup } from "./pages/Auth";
 import Sell from "./pages/Sell";
 import EditListing from "./pages/EditListing";
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/parts" element={<Browse key="part" kind="part" />} />
         <Route path="/fluids" element={<Browse key="fluid" kind="fluid" />} />
+        <Route path="/listings/:id" element={<Details />} />
 
         {/* guests only: logged-in users are sent home */}
         <Route element={<GuestView />}>

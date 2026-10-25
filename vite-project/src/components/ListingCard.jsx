@@ -1,23 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { fitLabel } from "../data";
-import { useAuth } from "../store";
+import ContactSeller from "./ContactSeller";
+import "../cards.css";
 
 export default function ListingCard({ l, editable = false }) {
-  const { user } = useAuth();
-  const [shown, setShown] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [i, setI] = useState(0);
   const n = l.images.length;
 
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(l.contact);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-    }
-  };
   return (
     <li className="card">
       {n > 0 ? (
@@ -37,7 +27,7 @@ export default function ListingCard({ l, editable = false }) {
         </div>
       )}
       <div className="card-body">
-        <h3>{l.title}</h3>
+        <h3><Link className="card-link" to={`/listings/${l.id}`}>{l.title}</Link></h3>
         <p className="partno">{l.kind === "part" ? `Part no. ${l.code}` : l.code}</p>
         {l.kind === "part" && <p className="fit">{fitLabel(l)}</p>}
         <p>{l.seller}, {l.city}</p>
@@ -49,18 +39,8 @@ export default function ListingCard({ l, editable = false }) {
         </div>
         {editable ? (
           <Link className="btn btn-outline" to={`/listings/${l.id}/edit`}>Edit</Link>
-        ) : user ? (
-          l.contact &&
-          (shown ? (
-            <div className="contact">
-              <span className="contact-email">{l.contact}</span>
-              <button className="btn btn-outline" onClick={copy}>{copied ? "Copied" : "Copy email"}</button>
-            </div>
-          ) : (
-            <button className="btn btn-outline" onClick={() => setShown(true)}>Contact seller</button>
-          ))
         ) : (
-          <Link className="btn btn-outline" to="/login">Log in to contact seller</Link>
+          <ContactSeller contact={l.contact} />
         )}
       </div>
     </li>

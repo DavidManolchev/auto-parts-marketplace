@@ -1,0 +1,5 @@
+/* bigger, centered listing photos in cards */
+.grid { grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); }
+.card .photo { height: 15rem; display: flex; align-items: center; justify-content: center; }
+.card .photo img { width: 100%; height: 100%; object-fit: contain; object-position: center; margin: 0 auto; background: #f5f5f5; }
+.card .photo-btn { display: flex; align-items: center; justify-content: center; }

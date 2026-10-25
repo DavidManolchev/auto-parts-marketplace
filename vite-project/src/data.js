@@ -4,7 +4,7 @@ export const VEHICLES = {
   BMW: { "3 Series": [2005, 2018], X5: [2007, 2018] },
   Ford: { Focus: [2005, 2018], Transit: [2006, 2020] },
 };
-export const CATEGORIES = ["Brake discs", "Brake pads", "Car batteries", "Cabin filters", "Oil filters", "Air filters", "Fuel filters", "Clutches"];
+export const CATEGORIES = ["Brake discs", "Brake pads", "Car batteries", "Cabin filters", "Oil filters", "Air filters", "Shock absorbers", "Fuel filters", "Clutches"];
 export const FLUID_CATEGORIES = ["Engine oil", "Coolant", "Brake fluid", "Transmission fluid", "Washer fluid"];
 export const CONDITIONS = ["New", "Refurbished", "Used, tested", "Used, as is"];
 

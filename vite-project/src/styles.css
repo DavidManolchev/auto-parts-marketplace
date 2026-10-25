@@ -130,3 +130,22 @@ a.btn { display: inline-block; text-decoration: none; text-align: center; }
 .price-range legend { grid-column: 1 / -1; }
 .price-range label { display: flex; flex-direction: column; gap: .25rem; font-weight: 500; font-size: .85rem; }
 .price-range input { width: 100%; }
+
+/* welcome message */
+.topbar .welcome { color: #dfe5e8; max-width: 15rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-right: .5rem; }
+
+/* revealed seller email */
+.contact { display: grid; gap: .4rem; margin-top: .5rem; }
+.contact-email { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: .85rem; background: #eef0f1; padding: .45rem .55rem; border-radius: 4px; overflow-wrap: anywhere; user-select: all; }
+.contact .btn-outline { margin-top: 0; }
+
+/* listing photos */
+.photo { height: 10rem; position: relative; overflow: hidden; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-btn { border: 0; padding: 0; background: none; width: 100%; height: 100%; cursor: pointer; position: relative; }
+.photo .count { position: absolute; right: .4rem; bottom: .4rem; background: rgba(29, 42, 49, .85); color: #fff; font: 600 .75rem var(--body); padding: .1rem .45rem; border-radius: 3px; }
+.hint { font-weight: 400; color: var(--muted); }
+.thumbs { list-style: none; display: flex; flex-wrap: wrap; gap: .75rem; padding: 0; margin: .6rem 0 0; }
+.thumbs li { position: relative; }
+.thumbs img { width: 5rem; height: 5rem; object-fit: cover; border-radius: 4px; border: 1px solid var(--line); display: block; }
+.thumbs button { position: absolute; top: -.45rem; right: -.45rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 0; background: var(--ink); color: #fff; cursor: pointer; line-height: 1; }

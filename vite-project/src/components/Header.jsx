@@ -1,8 +1,8 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-{/*import { useAuth } from "../store"; TBD*/ }
+import { useAuth } from "../store";
 
 export default function Header() {
-  {/*const { user, logout } = useAuth(); TBD*/ }
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
   const signOut = () => {
     navigate("/");
@@ -20,6 +20,7 @@ export default function Header() {
       <div className="actions-nav">
         {user ? (
           <>
+            <span className="welcome">Welcome, {user.name}!</span>
             <Link className="btn btn-primary" to="/sell">Sell an item</Link>
             <button className="btn btn-outline" onClick={signOut}>Log out</button>
           </>

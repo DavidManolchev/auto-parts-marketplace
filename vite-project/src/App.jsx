@@ -1,51 +1,37 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import GuestView from "./views/GuestView";
+import LoggedUserView from "./views/LoggedUserView";
+import { Login, Signup } from "./pages/Auth";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
     <>
-      <header className="topbar">
-        <a className="brand" href="/">APM</a>
-        <nav aria-label="Main">
-          <a href="#listings">Browse parts</a>
-          <a href="#listings">Browse fluids</a>
-          <a href="#listings">My listings</a>
-        </nav>
-        <button className="btn btn-primary" onClick={() => setSignupOpen(true)}>Sign up</button> {/*appear only if user is not logged in*/}
-        <button className="btn btn-primary" onClick={() => setLoginOpen(true)}>Log in</button> {/*appear only if user is not logged in*/}
-        <button className="btn btn-primary" onClick={() => setLogoutOpen(true)}>Log out</button> {/*appear only if user is logged in*/}
-        <button className="btn btn-primary" onClick={() => setSellOpen(true)}>Sell a part</button> {/*appear only if user is logged in*/}
-      </header>
+      <Header />
+      <Routes>
+        {/* public */}
+        {/*TBD example home with parts and fluids links
+        <Route path="/" element={<Home />} />
+        <Route path="/parts" element={<Browse key="part" kind="part" />} />
+        <Route path="/fluids" element={<Browse key="fluid" kind="fluid" />} />
+        */}
+        {/* guests only: logged-in users are sent home */}
+        <Route element={<GuestView />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
 
-      <section className="finder">
-        <h1>Find parts that fit your car</h1>
-        <form className="finder-form" onSubmit={(e) => e.preventDefault()}>
-          <label>
-            Make
-            <select>
-              <option value="someOption">Some option</option>
-              <option value="otherOption">Other option</option>
-            </select>
-          </label>
-          <label>
-            Model
-            <select>
-              <option value="someOption">Some option</option>
-              <option value="otherOption">Other option</option>
-            </select>
-          </label>
-          <label>
-            Year
-            <select>
-              <option value="someOption">Some option</option>
-              <option value="otherOption">Other option</option>
-            </select>
-          </label>
-          <label className="grow">
-            Part name or number
-            <input type="search" placeholder="Brake disc, BD-28041…" value="" />
-          </label>
-        </form>
-      </section>
+        {/* logged-in users only: guests are sent to log in */}
+        <Route element={<LoggedUserView />}>
+          {/*TBD example sell and my-listings routes
+          <Route path="/sell" element={<Sell />} />
+          <Route path="/my-listings" element={<MyListings />} />
+        */}
+        </Route>
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 }

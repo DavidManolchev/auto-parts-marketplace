@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CATEGORIES, CONDITIONS, FLUID_CATEGORIES, VEHICLES } from "../data";
 import { useListings } from "../store";
+import "../photos.css";
 
 const MAX_FILES = 4;
 const MAX_MB = 5;
@@ -126,10 +127,14 @@ export default function Sell({ listing }) {
           <label>City<input value={f.city} onChange={set("city")} /></label>
         </div>
         <div className="photos">
-          <label>
+          <span className="photos-title">
             Photos <span className="hint">(up to {MAX_FILES}, JPG, PNG or WebP, {MAX_MB} MB each)</span>
-            <input type="file" accept={TYPES.join(",")} multiple onChange={pick} disabled={total >= MAX_FILES} />
+          </span>
+          <label className={`btn btn-outline file-btn ${total >= MAX_FILES ? "full" : ""}`}>
+            {total >= MAX_FILES ? "Maximum photos added" : total > 0 ? "Add more photos" : "Choose photos"}
+            <input type="file" className="sr-only" accept={TYPES.join(",")} multiple onChange={pick} disabled={total >= MAX_FILES} />
           </label>
+          <p className="count photos-count" role="status">{total} of {MAX_FILES} photos added</p>
           {total > 0 && (
             <ul className="thumbs">
               {kept.map((k, i) => (

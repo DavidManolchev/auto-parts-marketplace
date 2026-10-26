@@ -1,0 +1,8 @@
+.panel .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.photos { display: grid; gap: .4rem; }
+.photos-title { font-weight: 600; font-size: .9rem; }
+.file-btn { position: relative; text-align: center; cursor: pointer; }
+.file-btn:focus-within { outline: 3px solid var(--blue); outline-offset: 2px; }
+.file-btn.full { opacity: .6; cursor: not-allowed; }
+.photos-count { margin: 0; font-size: .85rem; }
+.photos .thumbs { margin-top: .2rem; }

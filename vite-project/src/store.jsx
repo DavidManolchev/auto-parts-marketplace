@@ -24,7 +24,7 @@ const toListing = (r) => ({
   contact: r.profiles?.contact_email ?? null,
 });
 
-const SELECT = "*, profiles(contact_email)";
+const SELECT = "*, profiles!listings_owner_id_fkey(contact_email)";
 const BUCKET = "listing-images";
 const EXT = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
 const imageUrl = (path) => supabase.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;

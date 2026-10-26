@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ContactSeller from "../components/ContactSeller";
+import DeleteListing from "../components/DeleteListing";
 import ListingsStatus from "../components/ListingsStatus";
 import { fitLabel } from "../data";
 import { useAuth, useListings } from "../store";
@@ -60,7 +61,10 @@ export default function Details() {
             <dt>Listed</dt><dd>{new Date(l.createdAt).toLocaleDateString()}</dd>
           </dl>
           {isOwner ? (
-            <Link className="btn btn-outline" to={`/listings/${l.id}/edit`}>Edit your listing</Link>
+            <div className="owner-actions">
+              <Link className="btn btn-outline" to={`/listings/${l.id}/edit`}>Edit your listing</Link>
+              <DeleteListing listing={l} />
+            </div>
           ) : (
             <ContactSeller contact={l.contact} />
           )}

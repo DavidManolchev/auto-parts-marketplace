@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { fitLabel } from "../data";
 import ContactSeller from "./ContactSeller";
+import DeleteListing from "./DeleteListing";
 import "../cards.css";
 
 export default function ListingCard({ l, editable = false }) {
@@ -38,7 +39,10 @@ export default function ListingCard({ l, editable = false }) {
           )}
         </div>
         {editable ? (
-          <Link className="btn btn-outline" to={`/listings/${l.id}/edit`}>Edit</Link>
+          <div className="owner-actions">
+            <Link className="btn btn-outline" to={`/listings/${l.id}/edit`}>Edit</Link>
+            <DeleteListing listing={l} />
+          </div>
         ) : (
           <ContactSeller contact={l.contact} />
         )}

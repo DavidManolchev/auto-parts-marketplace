@@ -1,0 +1,11 @@
+.owner-actions { display: grid; gap: .5rem; margin-top: .5rem; }
+.owner-actions .btn { margin-top: 0; }
+.btn.btn-danger { background: var(--rust); color: #fff; width: auto; }
+.btn.btn-danger:hover:not(:disabled) { background: #983a20; }
+.btn.btn-danger-outline { background: transparent; border-color: var(--rust); color: var(--rust); width: 100%; }
+.btn.btn-danger-outline:hover { background: var(--rust); color: #fff; }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+.confirm { display: grid; gap: .5rem; padding: .75rem; border: 2px solid var(--rust); border-radius: 4px; background: #fbefea; }
+.confirm p { margin: 0; color: var(--ink); font-weight: 600; font-size: .9rem; }
+.confirm-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+.confirm-actions .btn { width: auto; flex: 1; }

@@ -141,9 +141,24 @@ export function AppProviders({ children }) {
     }
   };
 
+  const deleteListing = async (id) => {
+    const target = listings.find((x) => x.id === id);
+    if (!user || !target || target.owner !== user.id) throw new Error("Only the author can delete a listing.");
+    const { data, error } = await supabase.from("listings").delete().eq("id", id).select("id");
+    if (error) throw error;
+    if (!data?.length) throw new Error("The listing was not deleted.");
+    if (target.imagePaths.length) {
+      try {
+        await supabase.storage.from(BUCKET).remove(target.imagePaths);
+      } catch {
+      }
+    }
+    setListings((cur) => cur.filter((x) => x.id !== id));
+  };
+
   return (
     <AuthCtx.Provider value={{ user, loading, signUp, logIn, logout }}>
-      <ListingsCtx.Provider value={{ listings, status, reload, addListing, updateListing }}>{children}</ListingsCtx.Provider>
+      <ListingsCtx.Provider value={{ listings, status, reload, addListing, updateListing, deleteListing }}>{children}</ListingsCtx.Provider>
     </AuthCtx.Provider>
   );
 }

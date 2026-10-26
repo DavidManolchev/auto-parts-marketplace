@@ -1,0 +1,16 @@
+.activity { margin-top: 2rem; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 1.25rem; display: grid; gap: 1rem; max-width: 46rem; }
+.activity-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.activity-head h2 { font-size: 1.75rem; }
+.btn.like { width: auto; }
+.btn.like.on { background: var(--ink); color: #fff; }
+.like-count { color: var(--muted); font-weight: 600; }
+.no-comments { margin: 0; color: var(--muted); }
+.comments { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
+.comments li { border-left: 4px solid var(--yellow); padding-left: .75rem; }
+.comments p { margin: .2rem 0 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+.comment-meta { display: flex; gap: .75rem; align-items: baseline; font-size: .9rem; }
+.comment-meta span { color: var(--muted); }
+.link-btn { margin-left: auto; background: none; border: 0; padding: 0; color: var(--rust); font: 600 .9rem var(--body); cursor: pointer; text-decoration: underline; }
+.comment-form { display: grid; gap: .5rem; justify-items: start; }
+.comment-form label { display: flex; flex-direction: column; gap: .25rem; font-weight: 600; font-size: .9rem; width: 100%; }
+.comment-form textarea { font: inherit; padding: .6rem .7rem; border: 2px solid var(--ink); border-radius: 4px; resize: vertical; width: 100%; }

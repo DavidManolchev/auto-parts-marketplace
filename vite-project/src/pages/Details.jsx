@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Activity from "../components/Activity";
 import ContactSeller from "../components/ContactSeller";
 import DeleteListing from "../components/DeleteListing";
 import ListingsStatus from "../components/ListingsStatus";
@@ -70,6 +71,7 @@ export default function Details() {
           )}
         </section>
       </div>
+      <Activity key={l.id} listingId={l.id} />
     </main>
   );
 }
